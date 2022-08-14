@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
+import SearchBar from "./SearchBar";
 
 const API_URL = "https://www.omdbapi.com?apikey=4cff05c8";
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
 
   const searchMovies = async (title) => {
     try {
@@ -26,18 +25,7 @@ function App() {
     <div className="app">
       <h1>MovieLand</h1>
 
-      <div className="search">
-        <input
-          placeholder="Search for movies"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <img
-          src={SearchIcon}
-          alt="search"
-          onClick={() => searchMovies(searchTerm)}
-        />
-      </div>
+      <SearchBar searchMovies={searchMovies} />
 
       {movies?.length > 0 ? (
         <div className="container">
