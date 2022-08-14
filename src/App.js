@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
+import MoviesContainer from "./MoviesContainer";
 import SearchBar from "./SearchBar";
 
 const API_URL = "https://www.omdbapi.com?apikey=4cff05c8";
@@ -28,11 +28,7 @@ function App() {
       <SearchBar searchMovies={searchMovies} />
 
       {movies?.length > 0 ? (
-        <div className="container">
-          {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.imdbID} />
-          ))}
-        </div>
+        <MoviesContainer movies={movies} />
       ) : (
         <div className="empty">
           <h2>No movies found</h2>
